@@ -1,0 +1,69 @@
+﻿<div class="page-header">
+   <h1>Welcome to task list!</h1>           
+</div>
+
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-3"><h4>Here are your tasks!</h4></div>
+                <div class="col-sm-9">
+                        <span class="pull-right">
+                            <label class="control-label">
+                                Show Completed:
+                            </label>
+                            <input class="pull-right" bs-switch
+                                   type="radio"
+                                   ng-model="showCompletedTasks"
+                                   switch-active="true"
+                                   switch-animate="true"
+                                   switch-on-text="Yes"
+                                   switch-off-text="No"
+                                   switch-on-color="primary"
+                                   switch-off-color="danger"
+                                   switch-radio-off="true"
+                                   switch-label-width="auto"
+                                   switch-handle-width="auto"
+                                   ng-true-value="true"
+                                   ng-false-value="false" />
+                        </span>                        
+                </div>
+            </div>            
+        </div>        
+        <table class="table table-hover table-striped">
+            <thead>
+            <th>Task Name</th>
+            <th>Description</th>
+            <th>Assigned To</th>
+            <th>Completed</th>
+            <th>Edit</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in tasks">
+                    <td class="col-md-2">{{task.taskName}}</td>
+                    <td class="col-md-4">
+                        <pre class="pre-scrollable">{{task.taskDescription}}</pre>
+                        <div ng-bind-html-unsafe="task.taskDescription | breakFilter"></div>
+                    </td>
+                    <td class="col-md-2">{{getUserDisplayName(task.assignedTo)}}</td>
+                    <td class="col-md-2"><input class="checkbox" type="checkbox" ng-disabled="true" ng-model="task.completed" switch-on-text="Yes" switch-off-text="No" switch-on-color="primary" switch-off-color="danger" switch-animate="true" switch-active="false" /></td>
+                    <td class="col-md-2">
+                        <button class="btn" ng-click="editTask(task.taskKey)">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <button class="btn btn-success pull-right" ng-click="editTask()">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Add Task
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

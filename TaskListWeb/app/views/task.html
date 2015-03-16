@@ -1,0 +1,70 @@
+﻿<div class="page-header">
+    <h3>{{headLine}}</h3>
+</div>
+<div class="row">
+    <div ng-repeat="alert in alerts" ng-class="alert.type" role="alert">
+        <button type="button" class="close" ng-click="closeAlert(alert.index)" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{alert.msg}}
+    </div>
+</div>
+<div class="row">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Task Name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" ng-model="task.taskName" placeholder="Task Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Task Description:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" ng-model="task.taskDescription"></textarea>
+                <div ng-bind-html-unsafe="task.taskDescription | breakFilter"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Assigned To:</label>
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="task.assignedTo" ng-options="user.userName as user.displayName for user in users">
+                    <option value="">Choose One...</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Completed:</label>
+            <div class="col-sm-10">
+                <input bs-switch
+                       type="radio"
+                       ng-model="task.completed"
+                       switch-active="true"
+                       switch-animate="true"
+                       switch-on-text="Yes"
+                       switch-off-text="No"
+                       switch-on-color="primary"
+                       switch-off-color="danger"
+                       switch-radio-off="true"
+                       switch-label-width="auto"
+                       switch-handle-width="auto"
+                       ng-true-value="true"
+                       ng-false-value="false" />
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<div class="row">
+    <hr />
+</div>
+<div class="row pull-right">
+    <button class="btn btn-success" ng-click="saveTask(true)">
+        <span class="glyphicon glyphicon-save"></span> Save Task &amp; Close
+    </button>
+    <button class="btn btn-success" ng-click="saveTask()">
+        <span class="glyphicon glyphicon-save"></span> Save Task
+    </button>
+</div>
+
+
+

@@ -1,0 +1,37 @@
+﻿body { 
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+
+.animate-repeat {
+  transition-property: opacity;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+   
+  -webkit-transition: opacity 1.0s ease-out;
+  -moz-transition: opacity 1.0s ease-out;
+  -o-transition: opacity 1.0s ease-out;
+  opacity: 0;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0; 
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  -webkit-transition: opacity 1.0s ease-in;
+  -moz-transition: opacity 1.0s ease-in;
+  -o-transition: opacity 1.0s ease-in;
+  opacity: 1;   
+}
